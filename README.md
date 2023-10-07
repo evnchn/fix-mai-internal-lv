@@ -12,7 +12,7 @@ or add `fix-mai-internal-lv.userscript.js` as userscript, then press the inverte
 <img width="412" alt="image" src="https://github.com/evnchn/fix-mai-internal-lv/assets/37951241/d07b39cc-b611-4299-a97c-2d1db595258b">
 
 
-## How to test this internal level database before mai-tools officially use it
+## \[for devs\] How to test this internal level database before mai-tools officially use it
 
 1. Edit the hosts file at `C:\Windows\System32\drivers\etc` and add entry `127.0.0.1 sgimera.github.io` to point the upstream data source domain to localhost
 2. Go to `chrome://net-internals/#hsts` to clear HSTS for `sgimera.github.io`
