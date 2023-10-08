@@ -1,7 +1,18 @@
 # fix-mai-internal-lv
 mai-tools broke because maidx_in_lv_festivalplus.js no longer available from upstream data source. This is a hotfix to regenerate said file.
 
+## The situation
+
+https://github.com/myjian/mai-tools/issues/83
+
+It has been fixed. Moreover, the hot-fix internal level data has bugs, such that the level may be severly biased towards buddies values even if the exact value is provided in festivalplus. 
+
 ## Actual hot-fix usable by user
+
+<details>
+  <summary>Do not use it anymore</summary>
+
+
 
 Add this to bookmarklet
 
@@ -10,9 +21,12 @@ Add this to bookmarklet
 or add `fix-mai-internal-lv.userscript.js` as userscript, then press the inverted button 
 
 <img width="412" alt="image" src="https://github.com/evnchn/fix-mai-internal-lv/assets/37951241/d07b39cc-b611-4299-a97c-2d1db595258b">
-
+</details>
 
 ## \[for devs\] How to test this internal level database before mai-tools officially use it
+
+<details>
+  <summary>Do not use it anymore</summary>
 
 1. Edit the hosts file at `C:\Windows\System32\drivers\etc` and add entry `127.0.0.1 sgimera.github.io` to point the upstream data source domain to localhost
 2. Go to `chrome://net-internals/#hsts` to clear HSTS for `sgimera.github.io`
@@ -20,3 +34,6 @@ or add `fix-mai-internal-lv.userscript.js` as userscript, then press the inverte
 4. Run `server.py`
 5. Visit https://sgimera.github.io/mai_RatingAnalyzer/scripts_maimai/maidx_in_lv_festivalplus.js and press OK on all the security errors \(you caused them yourselves\)
 6. Enjoy your internal levels!
+
+</details>
+
