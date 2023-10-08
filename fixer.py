@@ -46,7 +46,7 @@ for lv in range(1,16):
             song_name = soup.select("span")[0].text
             dx = False
             if song_name.endswith("[dx]"):
-                song_name = song_name[-4:]
+                song_name = song_name[:-4]
                 dx = True
             song_type = soup.select("span")[0]['class'][0][-1]
             print(exact_level, song_type, dx, song_name)
@@ -131,11 +131,24 @@ in_lv = [x for x in in_lv if x['v'] < 21]
 # to get rid of new version charts
 
 print(in_lv)
+import math
 
 def who_is_the_bettter_bet(mine, yours):
     if mine == 0: # no data on festival, use buddies data
         return yours
-    elif mine < 0 and yours > 0: # festival unsure, buddies sure, use buddies data
+    elif mine < 0 and yours > 0: # festival unsure, buddies sure, use buddies data WITH CONDITION!!!
+        if yours < abs(mine): # mine was -11 but now you say 10.9. I reject downgrades!
+            print("No downgrades!", mine, yours)
+            input()
+            return mine
+        if math.isclose(abs(mine)%1, 0.7) and yours > abs(mine) + 0.25: # mine was -11.7 but you say it is 12 or higher
+            print("No upgrades! (+)", mine, yours, abs(mine) + 0.25)
+            input()
+            return mine # maybe return upper bound?
+        if not math.isclose(abs(mine)%1, 0.7) and yours > abs(mine) + 0.65: # mine was -11 but you say it is 11.7 or higher
+            print("No upgrades!", mine, yours)
+            input()
+            return mine # maybe return upper bound?
         return yours
     elif mine > 0 and yours < 0: # festival sure, buddies unsure, use festival data
         return mine
